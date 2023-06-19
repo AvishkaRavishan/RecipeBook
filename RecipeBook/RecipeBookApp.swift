@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct RecipeBookApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject private var recipeViewModel = FirebaseManager()
+
+    init() {
+        FirebaseApp.configure() // Configure Firebase
+    }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(recipeViewModel)
         }
+
     }
 }
