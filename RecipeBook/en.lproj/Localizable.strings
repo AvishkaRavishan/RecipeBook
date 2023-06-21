@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  RecipeBook
+
+  Created by AVISHKA RAVISHAN on 2023-06-16.
+  
+*/
+
+/* Localizable.strings (Base) */
+
+"Ingredients" = "Ingredients";
+"Instructions" = "Instructions";
+"Edit" = "Edit";
+
+/* Localizable.strings (French) */
+
+"Ingredients" = "Ingrédients";
+"Instructions" = "Instructions";
+"Edit" = "Modifier";
+
+/* Localizable.strings (Spanish) */
+
+"Ingredients" = "Ingredientes";
+"Instructions" = "Instrucciones";
+"Edit" = "Editar";
