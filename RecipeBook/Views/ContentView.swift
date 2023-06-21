@@ -17,19 +17,19 @@ struct ContentView: View {
             RecipeListView()
                 .tabItem {
                     Image(systemName: "list.bullet")
-                    Text("Recipes")
+                    Text(NSLocalizedString("recipes", comment: ""))
                 }
             
             SearchView(searchText: $searchText, searchResults: $searchResults)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                    Text("Search")
+                    Text(NSLocalizedString("search", comment: ""))
                 }
 
             AddRecipeView()
                 .tabItem {
                     Image(systemName: "plus.square")
-                    Text("Add Recipe")
+                    Text(NSLocalizedString("addRecipe", comment: ""))
                 }
 
         }

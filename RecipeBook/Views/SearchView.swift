@@ -13,55 +13,57 @@ struct SearchView: View {
     @StateObject private var recipeViewModel = FirebaseManager()
 
     var body: some View {
-        VStack {
-            if searchResults.isEmpty {
-                Spacer()
-                Text("No recipes found")
-                    .font(.headline)
-                    .foregroundColor(.gray)
-                Spacer()
-            } else {
-                List(searchResults, id: \.id) { recipe in
-                    NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-                        VStack(alignment: .leading) {
-                            Text(recipe.title)
-                                .font(.headline)
-                            Text("Ingredients: \(recipe.ingredients.joined(separator: ", "))")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
+        NavigationView {
+            VStack {
+                if searchResults.isEmpty {
+                    Spacer()
+                    Text(NSLocalizedString("noRecipesFound", comment: ""))
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                    Spacer()
+                } else {
+                    List(searchResults, id: \.id) { recipe in
+                        NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                            VStack(alignment: .leading) {
+                                Text(recipe.title)
+                                    .font(.headline)
+                                Text("Ingredients: \(recipe.ingredients.joined(separator: ", "))")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.vertical, 8)
                         }
-                        .padding(.vertical, 8)
                     }
+                    .listStyle(GroupedListStyle())
                 }
-                .listStyle(GroupedListStyle())
-            }
 
-            Spacer()
+                Spacer()
 
-            TextField("Search Recipes", text: $searchText)
-                .padding(.horizontal)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField(NSLocalizedString("searchRecipes", comment: ""), text: $searchText)
+                    .padding(.horizontal)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.bottom, 16)
+
+                Button(action: {
+                    recipeViewModel.searchRecipes(with: searchText) { recipes in
+                        searchResults = recipes
+                    }
+                }) {
+                    Text(NSLocalizedString("searchRecipes", comment: ""))
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
                 .padding(.bottom, 16)
-
-            Button(action: {
-                recipeViewModel.searchRecipes(with: searchText) { recipes in
-                    searchResults = recipes
-                }
-            }) {
-                Text("Search")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
             }
-            .padding(.bottom, 16)
-        }
-        .padding()
-        .navigationBarTitle("Search Recipes")
-        .onAppear {
-            recipeViewModel.fetchRecipes()
+            .padding()
+            .navigationBarTitle(NSLocalizedString("searchRecipes", comment: ""))
+            .onAppear {
+                recipeViewModel.fetchRecipes()
+            }
         }
     }
 }

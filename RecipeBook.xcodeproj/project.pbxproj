@@ -12,7 +12,9 @@
 		EF1CE5D72A3F50CF00DC2C31 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CE5D62A3F50CF00DC2C31 /* RecipeViewController.swift */; };
 		EF1CE5D92A3F51FE00DC2C31 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CE5D82A3F51FE00DC2C31 /* RecipeCollectionViewCell.swift */; };
 		EF1CE5DE2A3F764B00DC2C31 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EF1CE5DD2A3F764B00DC2C31 /* SDWebImageSwiftUI */; };
-		EF1CE5E02A4041C400DC2C31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF1CE5DF2A4041C400DC2C31 /* GoogleService-Info.plist */; };
+		EF1CE5E32A405D3C00DC2C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF1CE5E52A405D3C00DC2C31 /* Localizable.strings */; };
+		EFBEBA642A429DF9006D49C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFBEBA632A429DF9006D49C7 /* GoogleService-Info.plist */; };
+		EFBEBA6C2A429F23006D49C7 /* RecipeBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEBA6B2A429F23006D49C7 /* RecipeBookTests.swift */; };
 		EFC80BE02A3C235300F4CBE1 /* RecipeBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC80BDF2A3C235300F4CBE1 /* RecipeBookApp.swift */; };
 		EFC80BE22A3C235300F4CBE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC80BE12A3C235300F4CBE1 /* ContentView.swift */; };
 		EFC80BE42A3C235500F4CBE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC80BE32A3C235500F4CBE1 /* Assets.xcassets */; };
@@ -29,11 +31,24 @@
 		EFCF99B82A3CC773000D9A62 /* EditRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF99B72A3CC773000D9A62 /* EditRecipeView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EFBEBA6D2A429F23006D49C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFC80BD42A3C235300F4CBE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFC80BDB2A3C235300F4CBE1;
+			remoteInfo = RecipeBook;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		EF1CE5D42A3F4A3200DC2C31 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		EF1CE5D62A3F50CF00DC2C31 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		EF1CE5D82A3F51FE00DC2C31 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
-		EF1CE5DF2A4041C400DC2C31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF1CE5E42A405D3C00DC2C31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EFBEBA632A429DF9006D49C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EFBEBA692A429F23006D49C7 /* RecipeBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFBEBA6B2A429F23006D49C7 /* RecipeBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBookTests.swift; sourceTree = "<group>"; };
 		EFC80BDC2A3C235300F4CBE1 /* RecipeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC80BDF2A3C235300F4CBE1 /* RecipeBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBookApp.swift; sourceTree = "<group>"; };
 		EFC80BE12A3C235300F4CBE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EFBEBA662A429F23006D49C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFC80BD92A3C235300F4CBE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,10 +93,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EFBEBA6A2A429F23006D49C7 /* RecipeBookTests */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEBA6B2A429F23006D49C7 /* RecipeBookTests.swift */,
+			);
+			path = RecipeBookTests;
+			sourceTree = "<group>";
+		};
 		EFC80BD32A3C235300F4CBE1 = {
 			isa = PBXGroup;
 			children = (
 				EFC80BDE2A3C235300F4CBE1 /* RecipeBook */,
+				EFBEBA6A2A429F23006D49C7 /* RecipeBookTests */,
 				EFC80BDD2A3C235300F4CBE1 /* Products */,
 				0F9D51C8490228CBF7FCDC0B /* Pods */,
 			);
@@ -84,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				EFC80BDC2A3C235300F4CBE1 /* RecipeBook.app */,
+				EFBEBA692A429F23006D49C7 /* RecipeBookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,7 +123,8 @@
 		EFC80BDE2A3C235300F4CBE1 /* RecipeBook */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CE5DF2A4041C400DC2C31 /* GoogleService-Info.plist */,
+				EF1CE5E52A405D3C00DC2C31 /* Localizable.strings */,
+				EFBEBA632A429DF9006D49C7 /* GoogleService-Info.plist */,
 				EFC80BFE2A3C24F800F4CBE1 /* Models */,
 				EFC80BFB2A3C24CF00F4CBE1 /* ViewModels */,
 				EFC80BF22A3C245100F4CBE1 /* Views */,
@@ -148,6 +181,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EFBEBA682A429F23006D49C7 /* RecipeBookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFBEBA6F2A429F23006D49C7 /* Build configuration list for PBXNativeTarget "RecipeBookTests" */;
+			buildPhases = (
+				EFBEBA652A429F23006D49C7 /* Sources */,
+				EFBEBA662A429F23006D49C7 /* Frameworks */,
+				EFBEBA672A429F23006D49C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFBEBA6E2A429F23006D49C7 /* PBXTargetDependency */,
+			);
+			name = RecipeBookTests;
+			productName = RecipeBookTests;
+			productReference = EFBEBA692A429F23006D49C7 /* RecipeBookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EFC80BDB2A3C235300F4CBE1 /* RecipeBook */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFC80BEF2A3C235500F4CBE1 /* Build configuration list for PBXNativeTarget "RecipeBook" */;
@@ -179,6 +230,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					EFBEBA682A429F23006D49C7 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = EFC80BDB2A3C235300F4CBE1;
+					};
 					EFC80BDB2A3C235300F4CBE1 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -202,17 +257,26 @@
 			projectRoot = "";
 			targets = (
 				EFC80BDB2A3C235300F4CBE1 /* RecipeBook */,
+				EFBEBA682A429F23006D49C7 /* RecipeBookTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EFBEBA672A429F23006D49C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFC80BDA2A3C235300F4CBE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EFC80BE72A3C235500F4CBE1 /* Preview Assets.xcassets in Resources */,
-				EF1CE5E02A4041C400DC2C31 /* GoogleService-Info.plist in Resources */,
+				EFBEBA642A429DF9006D49C7 /* GoogleService-Info.plist in Resources */,
+				EF1CE5E32A405D3C00DC2C31 /* Localizable.strings in Resources */,
 				EFC80BE42A3C235500F4CBE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +284,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EFBEBA652A429F23006D49C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFBEBA6C2A429F23006D49C7 /* RecipeBookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFC80BD82A3C235300F4CBE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,7 +316,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EFBEBA6E2A429F23006D49C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFC80BDB2A3C235300F4CBE1 /* RecipeBook */;
+			targetProxy = EFBEBA6D2A429F23006D49C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF1CE5E52A405D3C00DC2C31 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF1CE5E42A405D3C00DC2C31 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		EFBEBA702A429F23006D49C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 44U2NUN45V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.v1.recipe.RecipeBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeBook";
+			};
+			name = Debug;
+		};
+		EFBEBA712A429F23006D49C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 44U2NUN45V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.v1.recipe.RecipeBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeBook";
+			};
+			name = Release;
+		};
 		EFC80BED2A3C235500F4CBE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -367,7 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeBook/Preview Content\"";
-				DEVELOPMENT_TEAM = 8ZTR53ZCT9;
+				DEVELOPMENT_TEAM = 44U2NUN45V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -420,6 +547,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EFBEBA6F2A429F23006D49C7 /* Build configuration list for PBXNativeTarget "RecipeBookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFBEBA702A429F23006D49C7 /* Debug */,
+				EFBEBA712A429F23006D49C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFC80BD72A3C235300F4CBE1 /* Build configuration list for PBXProject "RecipeBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

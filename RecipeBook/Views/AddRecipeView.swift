@@ -10,102 +10,122 @@ import SwiftUI
 struct AddRecipeView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var recipeViewModel = FirebaseManager()
+//    @State private var viewManager = RecipeManager()
     @State private var newRecipeTitle = ""
-    @State private var newRecipeIngredient = ""
+    @State private var newIngredient = ""
     @State private var newRecipeIngredients: [String] = []
     @State private var newRecipeInstructions = ""
     @State private var newRecipeImageURL = ""
     @State private var showError = false
     @State private var showSuccess = false
+    @State private var navigateToRecipeList = false
 
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Recipe Details")) {
-                    TextField("Recipe Title", text: $newRecipeTitle)
-                        .font(.headline)
-                        .padding(.vertical, 8)
-
-                    TextField("Image URL", text: $newRecipeImageURL)
-                        .font(.headline)
-                        .padding(.vertical, 8)
-
-                    Text("Ingredients")
-                        .font(.headline)
-                        .padding(.top)
-
-                    VStack(alignment: .leading) {
-                        ForEach(newRecipeIngredients, id: \.self) { ingredient in
-                            Text(ingredient)
-                        }
-
-                        HStack {
-                            TextField("Add Ingredient", text: $newRecipeIngredient)
+                    Form {
+                        Section(header: Text(LocalizedStringKey("Recipe Details"))) {
+                            TextField(LocalizedStringKey("Recipe Title"), text: $newRecipeTitle)
                                 .font(.headline)
                                 .padding(.vertical, 8)
 
+                            TextField(LocalizedStringKey("Image URL"), text: $newRecipeImageURL)
+                                .font(.headline)
+                                .padding(.vertical, 8)
+
+                            Text(LocalizedStringKey("Ingredients"))
+                                .font(.headline)
+                                .padding(.top)
+
+                            ForEach(newRecipeIngredients.indices, id: \.self) { index in
+                                HStack {
+                                    Image(systemName: "circle")
+                                        .foregroundColor(.blue)
+                                    TextField(LocalizedStringKey("Ingredient"), text: $newRecipeIngredients[index])
+                                        .font(.headline)
+                                        .padding(.vertical, 8)
+                                    Button(action: {
+                                        removeIngredient(at: index)
+                                    }) {
+                                        Image(systemName: "minus.circle")
+                                            .foregroundColor(.red)
+                                    }
+                                }
+                            }
+
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                    .foregroundColor(.blue)
+                                TextField(LocalizedStringKey("New Ingredient"), text: $newIngredient)
+                                    .font(.headline)
+                                    .padding(.vertical, 8)
+                                Button(action: {
+                                    addIngredient()
+                                }) {
+                                    Image(systemName: "plus.circle")
+                                        .foregroundColor(.blue)
+                                }
+                            }
+                            .padding(.vertical, 8)
+
+                            Text(LocalizedStringKey("Instructions"))
+                                .font(.headline)
+                                .padding(.top)
+
+                            TextEditor(text: $newRecipeInstructions)
+                                .frame(height: 150)
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                                .padding(.vertical, 8)
+                        }
+
+                        Section {
                             Button(action: {
-                                addIngredient()
+                                addRecipe()
                             }, label: {
-                                Text("Add")
+                                Text(LocalizedStringKey("Add Recipe"))
                                     .font(.headline)
                                     .foregroundColor(.white)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 8)
-                                    .background(Color.blue)
-                                    .cornerRadius(8)
+                                    .frame(maxWidth: .infinity, alignment: .center)
                             })
-                            .disabled(newRecipeIngredient.isEmpty)
+                            .listRowBackground(Color.blue)
+                            .disabled(newRecipeTitle.isEmpty || newRecipeIngredients.isEmpty)
                         }
                     }
-                    .padding(.vertical, 8)
+            
+            
+                    .navigationBarTitle(LocalizedStringKey("Add Recipe"))
 
-                    Text("Instructions")
-                        .font(.headline)
-                        .padding(.top)
-
-                    TextEditor(text: $newRecipeInstructions)
-                        .frame(height: 150)
-                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                        .padding(.vertical, 8)
-                }
-
-                Section {
-                    Button(action: {
-                        addRecipe()
-                    }, label: {
-                        Text("Add Recipe")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    })
-                    .listRowBackground(Color.blue)
-                    .disabled(newRecipeTitle.isEmpty || newRecipeIngredients.isEmpty)
-                }
-            }
-            .navigationBarTitle("Add Recipe")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EmptyView()
-                }
-            }
             .alert(isPresented: $showError) {
                 Alert(title: Text("Error"), message: Text("Recipe title is required."), dismissButton: .default(Text("OK")))
             }
             .alert(isPresented: $showSuccess) {
-                Alert(title: Text("Success"), message: Text("Recipe added successfully."), dismissButton: .default(Text("OK")) {
-                    navigateBack()
-                })
+                Alert(
+                    title: Text("Success"),
+                    message: Text("Recipe added successfully"),
+                    dismissButton: .default(Text("OK"), action: {
+                        navigateToRecipeList = true
+                    })
+                )
             }
+            .background(
+                NavigationLink(
+                    destination: RecipeListView(),
+                    isActive: $navigateToRecipeList,
+                    label: { EmptyView() }
+                )
+            )
         }
     }
 
     private func addIngredient() {
-        let ingredient = newRecipeIngredient.trimmingCharacters(in: .whitespacesAndNewlines)
+        let ingredient = newIngredient.trimmingCharacters(in: .whitespacesAndNewlines)
         if !ingredient.isEmpty {
             newRecipeIngredients.append(ingredient)
-            newRecipeIngredient = ""
+            newIngredient = ""
         }
+    }
+
+    private func removeIngredient(at index: Int) {
+        newRecipeIngredients.remove(at: index)
     }
 
     private func addRecipe() {
@@ -125,10 +145,10 @@ struct AddRecipeView: View {
         recipeViewModel.addRecipe(recipe)
 
         showSuccess = true
-        
+
         // Clear the fields
         newRecipeTitle = ""
-        newRecipeIngredient = ""
+        newIngredient = ""
         newRecipeIngredients = []
         newRecipeInstructions = ""
         newRecipeImageURL = ""
